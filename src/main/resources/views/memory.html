@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Test durable Oracle chat memory.">
+<title th:text="${pageTitle}">Durable Memory · Oracle AI Lab</title>
+<link rel="icon" type="image/svg+xml"
+	th:href="@{/assets/images/micronaut-sally.svg}"
+	href="/assets/images/micronaut-sally.svg">
+<link rel="stylesheet" th:href="@{/assets/css/micronaut.css}"
+	href="/assets/css/micronaut.css">
+<script defer th:src="@{/assets/js/oracle-ai-lab.js}"
+	src="/assets/js/oracle-ai-lab.js"></script>
+</head>
+<body data-api-base="/api" th:attr="data-api-base=${apiBase}">
+	<a class="skip-link" href="#memory-workspace">Skip to memory
+		workspace</a>
+	<header
+		th:replace="~{fragments :: site-header(${applicationName}, ${activePage})}"></header>
+	<main id="memory-workspace" class="workspace-section feature-page">
+		<div class="container feature-shell">
+			<section class="panel panel-memory" aria-labelledby="memory-title">
+				<div class="panel-heading">
+					<span class="panel-number">01</span>
+					<div>
+						<p class="eyebrow">Durable memory</p>
+						<h1 id="memory-title">Start or continue a conversation</h1>
+					</div>
+				</div>
+				<p class="panel-copy">Messages are written to CHAT_MEMORY and
+					reloaded by the same conversation UUID.</p>
+				<form id="start-conversation-form" class="form-stack">
+					<label for="start-message">First message</label>
+					<textarea id="start-message" name="message" rows="4"
+						maxlength="4000" required>Please remember that my name is Ada and I prefer concise answers.</textarea>
+					<button class="button button-primary" type="submit">Start
+						conversation</button>
+				</form>
+				<form id="continue-conversation-form"
+					class="form-stack form-divider">
+					<label for="conversation-id">Conversation ID</label> <input
+						id="conversation-id" name="conversationId" type="text" required
+						autocomplete="off"
+						pattern="^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+						aria-describedby="conversation-help"
+						placeholder="Set automatically after starting">
+					<p class="field-help" id="conversation-help">A newly started
+						conversation fills this automatically. You may also paste an
+						existing UUID.</p>
+					<label for="continue-message">Next message</label>
+					<textarea id="continue-message" name="message" rows="3"
+						maxlength="4000" required>What name and answer style did I ask you to remember?</textarea>
+					<button class="button button-secondary" type="submit">Continue
+						with stored memory</button>
+				</form>
+			</section>
+			<section class="panel panel-results response-panel"
+				aria-labelledby="memory-results-title">
+				<div class="panel-heading">
+					<span class="panel-number">Live</span>
+					<div>
+						<p class="eyebrow">Memory response</p>
+						<h2 id="memory-results-title">Inspect what happened</h2>
+					</div>
+				</div>
+				<p class="request-status" id="request-status" role="status"
+					aria-live="polite">Ready. Start a conversation or continue one
+					with its UUID.</p>
+				<pre id="api-result" tabindex="0"
+					aria-label="Latest memory API response">No response yet.</pre>
+			</section>
+		</div>
+	</main>
+	<footer th:replace="~{fragments :: site-footer(${applicationName})}"></footer>
+</body>
+</html>

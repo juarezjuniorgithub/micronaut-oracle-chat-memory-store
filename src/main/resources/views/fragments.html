@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+	<header th:fragment="site-header(applicationName, activePage)"
+		class="site-header">
+		<div class="container header-content">
+			<a class="brand" th:href="@{/}" href="/"
+				aria-label="Oracle AI Lab home"> <span class="brand-mark"
+				aria-hidden="true">MN</span> <span th:text="${applicationName}">Oracle
+					AI Lab</span>
+			</a>
+			<nav aria-label="Capability pages">
+				<a th:href="@{/memory}" href="/memory"
+					th:classappend="${activePage == 'memory'} ? ' is-active'">Memory</a>
+				<a th:href="@{/rag}" href="/rag"
+					th:classappend="${activePage == 'rag'} ? ' is-active'">RAG</a> <a
+					th:href="@{/agent}" href="/agent"
+					th:classappend="${activePage == 'agent'} ? ' is-active'">Agent</a>
+			</nav>
+			<span class="runtime-badge">Micronaut 5.2.2</span>
+		</div>
+	</header>
+
+	<footer th:fragment="site-footer(applicationName)" class="site-footer">
+		<div class="container footer-content">
+			<span th:text="${applicationName}">Oracle AI Lab</span>
+		</div>
+	</footer>
+</body>
+</html>

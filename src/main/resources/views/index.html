@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description"
+	content="Oracle-backed LangChain4j memory, RAG, and agent capabilities.">
+<title th:text="${pageTitle}">Oracle AI Lab</title>
+<link rel="icon" type="image/svg+xml"
+	th:href="@{/assets/images/micronaut-sally.svg}"
+	href="/assets/images/micronaut-sally.svg">
+<link rel="stylesheet" th:href="@{/assets/css/micronaut.css}"
+	href="/assets/css/micronaut.css">
+</head>
+<body>
+	<a class="skip-link" href="#capabilities">Skip to capabilities</a>
+	<header
+		th:replace="~{fragments :: site-header(${applicationName}, ${activePage})}"></header>
+	<main id="top">
+		<section class="hero">
+			<div class="container hero-grid">
+				<div>
+					<h1>Oracle AI Lab</h1>
+					<p class="hero-copy">Explore durable Oracle chat memory,
+						vector-search RAG, and a Micronaut declarative agent. Each
+						capability has a dedicated page and its own response inspector.</p>
+				</div>
+				<aside class="architecture-card" aria-label="Architecture summary">
+					<span class="architecture-kicker">One database, three
+						capabilities</span>
+					<ol>
+						<li><strong>CHAT_MEMORY</strong><span>Durable message
+								windows</span></li>
+						<li><strong>DOCUMENT_EMBEDDINGS</strong><span>Oracle
+								vector retrieval</span></li>
+						<li><strong>@AgenticService</strong><span>Tools and
+								remembered context</span></li>
+					</ol>
+				</aside>
+			</div>
+		</section>
+		<section class="workspace-section" id="capabilities"
+			aria-labelledby="capabilities-title">
+			<div class="container">
+				<div class="section-heading">
+					<div>
+						<p class="eyebrow">Interactive workspace</p>
+						<h2 id="capabilities-title">Choose a capability</h2>
+					</div>
+				</div>
+				<div class="capability-grid">
+					<a class="capability-card" th:href="@{/memory}" href="/memory"><span
+						class="panel-number">01</span>
+						<h3>Durable memory</h3>
+						<p>Start or continue a UUID-scoped conversation backed by
+							CHAT_MEMORY.</p></a> <a class="capability-card" th:href="@{/rag}"
+						href="/rag"><span class="panel-number">02</span>
+						<h3>Oracle AI Vector Search</h3>
+						<p>Index trusted documents and build retrieval context.</p></a> <a
+						class="capability-card" th:href="@{/agent}" href="/agent"><span
+						class="panel-number">03</span>
+						<h3>Knowledge agent</h3>
+						<p>Ask the agent using its RAG retriever and architecture
+							tool.</p></a>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer th:replace="~{fragments :: site-footer(${applicationName})}"></footer>
+</body>
+</html>

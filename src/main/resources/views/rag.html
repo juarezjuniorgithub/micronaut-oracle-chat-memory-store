@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description"
+	content="Index RAG context with Oracle AI Vector Search.">
+<title th:text="${pageTitle}">RAG · Oracle AI Lab</title>
+<link rel="icon" type="image/svg+xml"
+	th:href="@{/assets/images/micronaut-sally.svg}"
+	href="/assets/images/micronaut-sally.svg">
+<link rel="stylesheet" th:href="@{/assets/css/micronaut.css}"
+	href="/assets/css/micronaut.css">
+<script defer th:src="@{/assets/js/oracle-ai-lab.js}"
+	src="/assets/js/oracle-ai-lab.js"></script>
+</head>
+<body data-api-base="/api" th:attr="data-api-base=${apiBase}">
+	<a class="skip-link" href="#rag-workspace">Skip to RAG workspace</a>
+	<header
+		th:replace="~{fragments :: site-header(${applicationName}, ${activePage})}"></header>
+	<main id="rag-workspace" class="workspace-section feature-page">
+		<div class="container feature-shell">
+			<section class="panel panel-rag" aria-labelledby="rag-title">
+				<div class="panel-heading">
+					<span class="panel-number">02</span>
+					<div>
+						<p class="eyebrow">Oracle AI Vector Search</p>
+						<h1 id="rag-title">Build retrieval context</h1>
+					</div>
+				</div>
+				<p class="panel-copy">Index trusted reference content, then ask
+					a conversation or agent question that can retrieve it.</p>
+				<form id="index-document-form" class="form-stack">
+					<label for="document-title">Document title</label> <input
+						id="document-title" name="title" type="text" maxlength="160"
+						required value="Oracle durable memory guide"> <label
+						for="document-content">Trusted document content</label>
+					<textarea id="document-content" name="content" rows="7"
+						maxlength="12000" required>OracleChatMemoryStore writes bounded conversation windows to CHAT_MEMORY. Oracle AI Vector Search stores RAG embeddings separately in DOCUMENT_EMBEDDINGS.</textarea>
+					<button class="button button-primary" type="submit">Index
+						this document</button>
+				</form>
+				<button class="text-button" id="seed-button-secondary" type="button">Or
+					load the three sample documents</button>
+			</section>
+			<section class="panel panel-results response-panel"
+				aria-labelledby="rag-results-title">
+				<div class="panel-heading">
+					<span class="panel-number">Live</span>
+					<div>
+						<p class="eyebrow">RAG response</p>
+						<h2 id="rag-results-title">Inspect what happened</h2>
+					</div>
+				</div>
+				<p class="request-status" id="request-status" role="status"
+					aria-live="polite">Ready. Index a document or load the demo
+					corpus.</p>
+				<pre id="api-result" tabindex="0"
+					aria-label="Latest RAG API response">No response yet.</pre>
+			</section>
+		</div>
+	</main>
+	<footer th:replace="~{fragments :: site-footer(${applicationName})}"></footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ask the Micronaut knowledge agent.">
+<title th:text="${pageTitle}">Agent · Oracle AI Lab</title>
+<link rel="icon" type="image/svg+xml"
+	th:href="@{/assets/images/micronaut-sally.svg}"
+	href="/assets/images/micronaut-sally.svg">
+<link rel="stylesheet" th:href="@{/assets/css/micronaut.css}"
+	href="/assets/css/micronaut.css">
+<script defer th:src="@{/assets/js/oracle-ai-lab.js}"
+	src="/assets/js/oracle-ai-lab.js"></script>
+</head>
+<body data-api-base="/api" th:attr="data-api-base=${apiBase}">
+	<a class="skip-link" href="#agent-workspace">Skip to agent
+		workspace</a>
+	<header
+		th:replace="~{fragments :: site-header(${applicationName}, ${activePage})}"></header>
+	<main id="agent-workspace" class="workspace-section feature-page">
+		<div class="container feature-shell">
+			<section class="panel panel-agent" aria-labelledby="agent-title">
+				<div class="panel-heading">
+					<span class="panel-number">03</span>
+					<div>
+						<p class="eyebrow">Micronaut Agentic Service</p>
+						<h1 id="agent-title">Ask the knowledge agent</h1>
+					</div>
+				</div>
+				<p class="panel-copy">The agent is configured with the
+					Oracle-backed memory store, RAG retriever, and an architecture
+					tool.</p>
+				<form id="agent-form" class="form-stack">
+					<label for="agent-message">Agent question</label>
+					<textarea id="agent-message" name="message" rows="5"
+						maxlength="4000" required>Use the persistentMemoryArchitecture tool and explain how CHAT_MEMORY differs from DOCUMENT_EMBEDDINGS.</textarea>
+					<button class="button button-primary" type="submit">Ask
+						agent</button>
+				</form>
+				<div class="agent-note">
+					<strong>Demo boundary:</strong> the declarative agent has
+					agent-scoped memory. Use the Memory page UUID flow for per-user
+					isolation.
+				</div>
+			</section>
+			<section class="panel panel-results response-panel"
+				aria-labelledby="agent-results-title">
+				<div class="panel-heading">
+					<span class="panel-number">Live</span>
+					<div>
+						<p class="eyebrow">Agent response</p>
+						<h2 id="agent-results-title">Inspect what happened</h2>
+					</div>
+				</div>
+				<p class="request-status" id="request-status" role="status"
+					aria-live="polite">Ready. Ask the knowledge agent a question.</p>
+				<pre id="api-result" tabindex="0"
+					aria-label="Latest agent API response">No response yet.</pre>
+			</section>
+		</div>
+	</main>
+	<footer th:replace="~{fragments :: site-footer(${applicationName})}"></footer>
+</body>
+</html>
