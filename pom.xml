@@ -8,7 +8,7 @@
   <parent>
     <groupId>io.micronaut.platform</groupId>
     <artifactId>micronaut-parent</artifactId>
-    <version>5.2.2</version>
+    <version>5.2.4</version>
   </parent>
 
   <groupId>io.micronaut.oracle.dev</groupId>
@@ -34,12 +34,12 @@
     paths. -->
     <!-- 2.3.0 is the LangChain4j line documented for Micronaut Framework 5.2.x. -->
     <micronaut.langchain4j.version>2.3.0</micronaut.langchain4j.version>
-    <micronaut.data.version>5.2.2</micronaut.data.version>
+    <micronaut.data.version>5.2.4</micronaut.data.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
-      <!-- Micronaut Platform 5.2.2 manages the remaining Micronaut modules. -->
+      <!-- Micronaut Platform 5.2.4 manages the remaining Micronaut modules. -->
       <dependency>
         <groupId>io.micronaut.langchain4j</groupId>
         <artifactId>micronaut-langchain4j-bom</artifactId>
